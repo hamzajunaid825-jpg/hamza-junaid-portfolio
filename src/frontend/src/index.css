@@ -1,0 +1,147 @@
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Navy/Gold Engineering palette */
+    --background: 0.18 0.02 250;
+    --foreground: 0.93 0.015 250;
+
+    --card: 0.22 0.025 245;
+    --card-foreground: 0.93 0.015 250;
+
+    --popover: 0.22 0.025 245;
+    --popover-foreground: 0.93 0.015 250;
+
+    /* Gold accent */
+    --primary: 0.78 0.13 82;
+    --primary-foreground: 0.14 0.03 250;
+
+    --secondary: 0.28 0.04 245;
+    --secondary-foreground: 0.93 0.015 250;
+
+    --muted: 0.25 0.03 245;
+    --muted-foreground: 0.62 0.04 245;
+
+    --accent: 0.78 0.13 82;
+    --accent-foreground: 0.14 0.03 250;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.3 0.04 245;
+    --input: 0.28 0.04 245;
+    --ring: 0.78 0.13 82;
+
+    --radius: 0.5rem;
+
+    --chart-1: 0.78 0.13 82;
+    --chart-2: 0.55 0.12 200;
+    --chart-3: 0.48 0.1 150;
+    --chart-4: 0.65 0.15 300;
+    --chart-5: 0.6 0.18 30;
+
+    --sidebar: 0.16 0.025 250;
+    --sidebar-foreground: 0.93 0.015 250;
+    --sidebar-primary: 0.78 0.13 82;
+    --sidebar-primary-foreground: 0.14 0.03 250;
+    --sidebar-accent: 0.25 0.03 245;
+    --sidebar-accent-foreground: 0.93 0.015 250;
+    --sidebar-border: 0.3 0.04 245;
+    --sidebar-ring: 0.78 0.13 82;
+
+    /* Custom tokens */
+    --navy-deep: 0.14 0.04 255;
+    --navy-mid: 0.2 0.05 255;
+    --gold: 0.78 0.13 82;
+    --gold-muted: 0.65 0.1 82;
+    --steel: 0.5 0.06 240;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .section-divider {
+    width: 60px;
+    height: 3px;
+    background: oklch(var(--gold));
+    margin-bottom: 1.5rem;
+  }
+
+  .skill-chip {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
+    background: oklch(var(--secondary));
+    border: 1px solid oklch(var(--gold) / 0.3);
+    color: oklch(var(--foreground));
+    transition: all 0.2s ease;
+  }
+
+  .skill-chip:hover {
+    border-color: oklch(var(--gold));
+    background: oklch(var(--gold) / 0.1);
+  }
+
+  .nav-link {
+    @apply relative text-sm font-medium tracking-wide uppercase;
+    color: oklch(var(--muted-foreground));
+    transition: color 0.2s ease;
+    padding-bottom: 4px;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: oklch(var(--gold));
+    transition: width 0.25s ease;
+  }
+
+  .nav-link:hover {
+    color: oklch(var(--gold));
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+}
